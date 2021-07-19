@@ -9,6 +9,7 @@ contract Color is ERC721 {
     constructor() ERC721("Color", "COLOR") {}
 
     function mint(string memory _color) public {
+        require(!_colorExists[_color]);//validate if color exists
         colors.push(_color);
         uint256 _id = colors.length - 1;
         _mint(msg.sender, _id);
